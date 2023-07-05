@@ -1,0 +1,10 @@
+USER_ID;DISPLAY_NAME;EMAIL_ADDRESS;FIRST_NAME;LAST_NAME;PHONE_LANDLINE;COMPANY_CODE;COST_CENTER_ID;COST_CENTER_NAME;LIVE_ACCESS_SYSTEM_AVAILABLE;PRECONFIGURED
+D035055;Christopher Smith;test@sap.com;Christopher;Smith;2672065338;001;10011222;USA;true;true
+D054361;Jame Johnson;test1@sap.com;Jame;Johnson;2672065338;001;10011222;USA;true;true
+I545471;John Williams;test2@sap.com;John;Williams;2672065338;001;10011222;USA;true;true
+I840891;Michael Brown;test3@sap.com;Michael;Brown;2672065338;001;10011222;USA;true;true
+D022390;David Jones;test4@sap.com;David;Jones;2672065338;001;10011222;USA;true;true
+D030957;William Garcia;test5@sap.com;William;Garcia;2672065338;001;10011222;USA;true;true
+D057396;Richard Miller;test6@sap.com;Richard;Miller;2672065338;001;10011222;USA;true;true
+I006795;Joseph Davis;test7@sap.com;Joseph;Davis;2672065338;001;10011222;USA;true;true
+D049417;Thomas Rodriguez;test8@sap.com;Thomas;Rodriguez;2672065338;001;10011222;USA;true;true

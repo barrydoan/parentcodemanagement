@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="ParentCodeService" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <EntityContainer Name="EntityContainer">
+                <EntitySet Name="ParentCodes" EntityType="ParentCodeService.ParentCodes">
+                    <NavigationPropertyBinding Path="SiblingEntity" Target="ParentCodes"/>
+                </EntitySet>
+                <EntitySet Name="ParentCodeTypesValueList" EntityType="ParentCodeService.ParentCodeTypesValueList"/>
+                <EntitySet Name="CertificationLevelValueList" EntityType="ParentCodeService.CertificationLevelValueList"/>
+                <EntitySet Name="KatieValueList" EntityType="ParentCodeService.KatieValueList"/>
+                <EntitySet Name="User" EntityType="ParentCodeService.User"/>
+            </EntityContainer>
+            <EntityType Name="ParentCodes">
+                <Key>
+                    <PropertyRef Name="ROW_ID"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="ROW_ID" Type="Edm.String" MaxLength="32" Nullable="false"/>
+                <Property Name="DELIVERABLE_ID" Type="Edm.String" MaxLength="32"/>
+                <Property Name="VALUECHAIN_ROOT_CODE" Type="Edm.String" MaxLength="13"/>
+                <Property Name="TITLE" Type="Edm.String" MaxLength="100"/>
+                <Property Name="SPOTLIGHT_TOPIC" Type="Edm.String" MaxLength="50" DefaultValue="Not applicable"/>
+                <Property Name="PORTFOLIO_DIMENSION" Type="Edm.String" MaxLength="50"/>
+                <Property Name="PORTFOLIO_MANAGER" Type="Edm.String" MaxLength="12"/>
+                <Property Name="LEARNING_ARCHITECT" Type="Edm.String" MaxLength="12"/>
+                <Property Name="EKT_PL" Type="Edm.String" MaxLength="12"/>
+                <Property Name="CONTENT_OWNER" Type="Edm.String" MaxLength="12"/>
+                <Property Name="CHANGED_AT" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="CHANGED_BY" Type="Edm.String" MaxLength="12"/>
+                <Property Name="CHANGE_COMMENT" Type="Edm.String" MaxLength="512"/>
+                <Property Name="DELETED" Type="Edm.String" MaxLength="5" DefaultValue="false"/>
+                <Property Name="PRODUCTION_CLUSTER_ID" Type="Edm.String" MaxLength="30" DefaultValue=""/>
+                <Property Name="PRODUCTION_MANAGER" Type="Edm.String" MaxLength="12"/>
+                <Property Name="TILE_ID" Type="Edm.Int32"/>
+                <Property Name="TILE_TYPE" Type="Edm.Int32"/>
+                <Property Name="PPMS_OBJECT_NUMBER" Type="Edm.String" MaxLength="20"/>
+                <Property Name="PPMS_PRODUCT" Type="Edm.String" MaxLength="30"/>
+                <Property Name="PPMS_PRODUCT_LINE" Type="Edm.String" MaxLength="100"/>
+                <Property Name="PPMS_PRODUCT_CATEGORY" Type="Edm.String" MaxLength="50"/>
+                <Property Name="BUCKET_GUID" Type="Edm.String" MaxLength="36"/>
+                <Property Name="PARENT_CODE_COMMENT" Type="Edm.String" MaxLength="512"/>
+                <Property Name="STAY_CURRENT_CERTIFICATION" Type="Edm.String" MaxLength="5" DefaultValue="false"/>
+                <Property Name="RETIRED" Type="Edm.String" MaxLength="5" DefaultValue="false"/>
+                <Property Name="ROOT_PARENT_CODE" Type="Edm.String" MaxLength="13"/>
+                <Property Name="LIVE_ACCESS_SYSTEM_AVAILABLE" Type="Edm.String" MaxLength="5" DefaultValue="false"/>
+                <Property Name="STARTING_CERTIFICATION_RELEASE" Type="Edm.String" MaxLength="4"/>
+                <Property Name="PARENT_CODE_TYPE" Type="Edm.String" MaxLength="20"/>
+                <Property Name="TARGET_AUDIENCE_ROLE" Type="Edm.String" MaxLength="30"/>
+                <Property Name="CERTIFICATION_LEVEL" Type="Edm.String" MaxLength="12"/>
+                <Property Name="CREDLY_TEMPLATE_ID" Type="Edm.String" MaxLength="36"/>
+                <Property Name="RETIREMENT_DATE" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="true"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="false"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="false"/>
+                <NavigationProperty Name="DraftAdministrativeData" Type="ParentCodeService.DraftAdministrativeData" ContainsTarget="true"/>
+                <NavigationProperty Name="SiblingEntity" Type="ParentCodeService.ParentCodes"/>
+            </EntityType>
+            <EntityType Name="ParentCodeTypesValueList">
+                <Property Name="VALUE" Type="Edm.String" MaxLength="50"/>
+            </EntityType>
+            <EntityType Name="CertificationLevelValueList">
+                <Property Name="VALUE" Type="Edm.String" MaxLength="50"/>
+            </EntityType>
+            <EntityType Name="KatieValueList">
+                <Property Name="TABLENAME" Type="Edm.String" MaxLength="120"/>
+                <Property Name="FIELDNAME" Type="Edm.String" MaxLength="60"/>
+                <Property Name="VALKEY" Type="Edm.String"/>
+                <Property Name="VALUE" Type="Edm.String" MaxLength="50"/>
+                <Property Name="DESCRIPTION" Type="Edm.String" MaxLength="110"/>
+                <Property Name="AUTH" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="User">
+                <Key>
+                    <PropertyRef Name="USER_ID"/>
+                </Key>
+                <Property Name="USER_ID" Type="Edm.String" Nullable="false"/>
+                <Property Name="DISPLAY_NAME" Type="Edm.String"/>
+                <Property Name="EMAIL_ADDRESS" Type="Edm.String"/>
+                <Property Name="FIRST_NAME" Type="Edm.String"/>
+                <Property Name="LAST_NAME" Type="Edm.String"/>
+                <Property Name="PHONE_LANDLINE" Type="Edm.String"/>
+                <Property Name="COMPANY_CODE" Type="Edm.String"/>
+                <Property Name="COST_CENTER_ID" Type="Edm.String"/>
+                <Property Name="COST_CENTER_NAME" Type="Edm.String"/>
+                <Property Name="ACTIVE" Type="Edm.String"/>
+                <Property Name="PRECONFIGURED" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="DraftAdministrativeData">
+                <Key>
+                    <PropertyRef Name="DraftUUID"/>
+                </Key>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="CreationDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="CreatedByUser" Type="Edm.String" MaxLength="256"/>
+                <Property Name="DraftIsCreatedByMe" Type="Edm.Boolean"/>
+                <Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="LastChangedByUser" Type="Edm.String" MaxLength="256"/>
+                <Property Name="InProcessByUser" Type="Edm.String" MaxLength="256"/>
+                <Property Name="DraftIsProcessedByMe" Type="Edm.Boolean"/>
+            </EntityType>
+            <Action Name="draftPrepare" IsBound="true" EntitySetPath="in">
+                <Parameter Name="in" Type="ParentCodeService.ParentCodes"/>
+                <Parameter Name="SideEffectsQualifier" Type="Edm.String"/>
+                <ReturnType Type="ParentCodeService.ParentCodes"/>
+            </Action>
+            <Action Name="draftActivate" IsBound="true" EntitySetPath="in">
+                <Parameter Name="in" Type="ParentCodeService.ParentCodes"/>
+                <ReturnType Type="ParentCodeService.ParentCodes"/>
+            </Action>
+            <Action Name="draftEdit" IsBound="true" EntitySetPath="in">
+                <Parameter Name="in" Type="ParentCodeService.ParentCodes"/>
+                <Parameter Name="PreserveChanges" Type="Edm.Boolean"/>
+                <ReturnType Type="ParentCodeService.ParentCodes"/>
+            </Action>
+            <Annotations Target="ParentCodeService.EntityContainer/ParentCodes">
+                <Annotation Term="Common.DraftRoot">
+                    <Record Type="Common.DraftRootType">
+                        <PropertyValue Property="ActivationAction" String="ParentCodeService.draftActivate"/>
+                        <PropertyValue Property="EditAction" String="ParentCodeService.draftEdit"/>
+                        <PropertyValue Property="PreparationAction" String="ParentCodeService.draftPrepare"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ParentCodeService.ParentCodes/IsActiveEntity">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+            </Annotations>
+            <Annotations Target="ParentCodeService.ParentCodes/HasActiveEntity">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+            </Annotations>
+            <Annotations Target="ParentCodeService.ParentCodes/HasDraftEntity">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+            </Annotations>
+            <Annotations Target="ParentCodeService.ParentCodes/DraftAdministrativeData">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+            </Annotations>
+            <Annotations Target="ParentCodeService.EntityContainer/ParentCodeTypesValueList">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ParentCodeService.EntityContainer/CertificationLevelValueList">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ParentCodeService.EntityContainer/KatieValueList">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ParentCodeService.EntityContainer/User">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ParentCodeService.DraftAdministrativeData">
+                <Annotation Term="Common.Label" String="{i18n>Draft_DraftAdministrativeData}"/>
+                </Annotations>
+                <Annotations Target="ParentCodeService.DraftAdministrativeData/DraftUUID">
+                    <Annotation Term="UI.Hidden" Bool="true"/>
+                    <Annotation Term="Common.Label" String="{i18n>Draft_DraftUUID}"/>
+                    </Annotations>
+                    <Annotations Target="ParentCodeService.DraftAdministrativeData/CreationDateTime">
+                        <Annotation Term="Common.Label" String="{i18n>Draft_CreationDateTime}"/>
+                        </Annotations>
+                        <Annotations Target="ParentCodeService.DraftAdministrativeData/CreatedByUser">
+                            <Annotation Term="Common.Label" String="{i18n>Draft_CreatedByUser}"/>
+                            </Annotations>
+                            <Annotations Target="ParentCodeService.DraftAdministrativeData/DraftIsCreatedByMe">
+                                <Annotation Term="UI.Hidden" Bool="true"/>
+                                <Annotation Term="Common.Label" String="{i18n>Draft_DraftIsCreatedByMe}"/>
+                                </Annotations>
+                                <Annotations Target="ParentCodeService.DraftAdministrativeData/LastChangeDateTime">
+                                    <Annotation Term="Common.Label" String="{i18n>Draft_LastChangeDateTime}"/>
+                                    </Annotations>
+                                    <Annotations Target="ParentCodeService.DraftAdministrativeData/LastChangedByUser">
+                                        <Annotation Term="Common.Label" String="{i18n>Draft_LastChangedByUser}"/>
+                                        </Annotations>
+                                        <Annotations Target="ParentCodeService.DraftAdministrativeData/InProcessByUser">
+                                            <Annotation Term="Common.Label" String="{i18n>Draft_InProcessByUser}"/>
+                                            </Annotations>
+                                            <Annotations Target="ParentCodeService.DraftAdministrativeData/DraftIsProcessedByMe">
+                                                <Annotation Term="UI.Hidden" Bool="true"/>
+                                                <Annotation Term="Common.Label" String="{i18n>Draft_DraftIsProcessedByMe}"/>
+                                                </Annotations>
+                                            </Schema>
+                                        </edmx:DataServices>
+                                    </edmx:Edmx>
